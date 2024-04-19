@@ -18,3 +18,23 @@ header.innerHTML = `
 
 //======================================================\\
 
+
+
+//======================Footer==========================\\
+
+var footer = document.querySelector('footer');
+
+footer.innerHTML = `
+    <div class="footer">
+        <a href="https://www.leagueoflegends.com/fr-fr/"><img src="../assets/img/riot-games.png"></a>
+        
+        <div class="team">
+            <p>Equipe :</p>
+            <p>Fabio Vincentelli</p>
+            <p>Hugo Bisserier</p>
+            <p>Alexandre Petitfrère</p>
+        </div>
+    </div>
+`;
+
+//======================================================\\
