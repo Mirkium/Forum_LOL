@@ -1,0 +1,16 @@
+#titre {
+    background: url(../img/back_lol.jpeg) no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.back {
+    background-color: rgb(0, 135, 253, 0.7);
+    display: flex;
+    justify-content: center;
+}
+
+.back > img {
+    width: 70%;
+    
+}
