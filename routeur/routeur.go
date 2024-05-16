@@ -26,4 +26,5 @@ func InitRouteur() {
 	http.HandleFunc("/categories/temporal", controller.Temporal)
 	http.HandleFunc("/messageHandle", controller.MessageHandler)
 	http.HandleFunc("/messageEditHandle", controller.EditMessageHandler)
+	//caca
 }
