@@ -1,5 +1,5 @@
 #titre {
-    background: url(../img/back_lol.jpeg) no-repeat;
+    background: url(/assets/img/back_lol.jpeg) no-repeat;
     background-size: cover;
     z-index: 1;
 }
