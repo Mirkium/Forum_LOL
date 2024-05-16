@@ -20,6 +20,10 @@ func InitRouteur() {
 	http.HandleFunc("/searchHandle", controller.SearchHandler)
 	http.HandleFunc("/results", controller.Results)
 	http.HandleFunc("/categories", controller.Categories)
+	http.HandleFunc("/categories/ranked", controller.Ranked)
+	http.HandleFunc("/categories/draft", controller.Draft)
+	http.HandleFunc("/categories/patch", controller.Patch)
+	http.HandleFunc("/categories/temporal", controller.Temporal)
 	http.HandleFunc("/messageHandle", controller.MessageHandler)
 	http.HandleFunc("/messageEditHandle", controller.EditMessageHandler)
 }

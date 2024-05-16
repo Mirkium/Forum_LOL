@@ -72,3 +72,19 @@ func EditMessageHandler(w http.ResponseWriter, r *http.Request) {
 func Error(w http.ResponseWriter, r *http.Request) {
 	templates.Temp.ExecuteTemplate(w, "404", nil)
 }
+
+func Ranked(w http.ResponseWriter, r *http.Request) {
+	templates.Temp.ExecuteTemplate(w, "ranked", nil)
+}
+
+func Draft(w http.ResponseWriter, r *http.Request) {
+	templates.Temp.ExecuteTemplate(w, "draft", nil)
+}
+
+func Patch(w http.ResponseWriter, r *http.Request) {
+	templates.Temp.ExecuteTemplate(w, "patch", nil)
+}
+
+func Temporal(w http.ResponseWriter, r *http.Request) {
+	templates.Temp.ExecuteTemplate(w, "temporal", nil)
+}
