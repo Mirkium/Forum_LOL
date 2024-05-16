@@ -8,7 +8,7 @@ import (
 var Temp *template.Template
 
 func InitTemplates() {
-	temp, err := template.ParseGlob("./templates/*.html")
+	temp, err := template.ParseGlob("./*.html")
 	if err != nil {
 		fmt.Println("Erreur template : ", err)
 	}
