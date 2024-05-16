@@ -1,20 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"main/routeur"
 	"net/http"
+	"os"
 )
 
 func main() {
-	templates.InitTemplate() 
+	routeur.InitRouteur()
 
-	routes.SetRoutes() 
-	
-	http.Handle("/asset/", http.StripPrefix("/asset/", http.FileServer(http.Dir("asset"))))
+	RootDoc, _ := os.Getwd()
+	fileserver := http.FileServer(http.Dir(RootDoc + "/assets/"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", fileserver))
 
-	fmt.Println("Serveur démarré sur http://localhost:8080/")
-	err := http.ListenAndServe(":8080", nil) 
-	if err != nil {
-		fmt.Println("Erreur lors du démarrage du serveur :", err)
-	}
+	http.ListenAndServe("localhost:8080", nil)
 }

@@ -1,0 +1,115 @@
+.base-bgcolor { background-color: #354152; }
+.base-color { color: #7e8ba3; }
+.base-font-weight { font-weight: 300; }
+.base-font-size { font-size: 1rem; }
+.base-line-height { line-height: 1.5; }
+.base-font-family { font-family: "Helvetica Neue", sans-serif; }
+
+* { box-sizing: border-box; }
+
+html, body { 
+  height: 100%; 
+  margin: 0;
+}
+
+body {
+  background-color: #354152;
+  color: #7e8ba3;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Helvetica Neue", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before, body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(50% - 12.5rem); /* Calculé pour laisser l'espace du .grid au centre */
+  background-size: cover;
+  background-position: center; /* Centre l'image dans l'espace alloué */
+  opacity: 0.5;
+  z-index: -1;
+}
+
+body::before {
+  left: 0;
+  background-image: url('/assets/img/inscriptiongauche.jpg');
+}
+
+body::after {
+  right: 0;
+  background-image: url('/assets/img/inscriptiondroite.jpg');
+}
+
+.grid {
+  z-index: 1;
+  position: relative;
+  max-width: 25rem;
+  width: 100%;
+  /* Le fond est déjà défini dans .register, donc pas besoin ici */
+}
+
+.register {
+  background-color: #354152;
+  box-shadow: 0 0 250px #000;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative; /* S'assure qu'il est au-dessus des pseudo-éléments */
+}
+
+.site__logo {
+  margin-bottom: 2rem;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.form {
+  margin-bottom: 1rem;
+}
+
+input {
+  border: 0;
+  font: inherit;
+  outline: 0;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+input[type="email"],
+input[type="password"] {
+  background-color: transparent;
+  border-radius: 999px;
+  text-align: center;
+  border: 1px solid #242c37;
+}
+
+input[type="submit"] {
+  background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%);
+  color: #fff;
+  margin-bottom: 6rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+a {
+  color: #7e8ba3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
