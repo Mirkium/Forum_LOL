@@ -10,7 +10,7 @@ func InitRouteur() {
 	http.HandleFunc("/", controller.Error)
 	http.HandleFunc("/accueil", controller.Home)
 	http.HandleFunc("/connexion", controller.Connect)
-	http.HandleFunc("/inscrpition", controller.Register)
+	http.HandleFunc("/inscription", controller.Register)
 	http.HandleFunc("/create_post", controller.CreatePost)
 	http.HandleFunc("/handleCreate", controller.CreateHandler)
 	http.HandleFunc("/post", controller.Post)

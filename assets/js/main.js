@@ -12,7 +12,7 @@ header.innerHTML = `
         <a href="Patch.html">PATCH</a>
         <p>|</p>
         <a href="TempMode.html">TEMPORAL MODE</a>
-        <a href="Compte.html" class="compte"><img src="/assets/img/icon_perso.png"></a>
+        <a href="profile" class="compte"><img src="/assets/img/icon_perso.png"></a>
     </div>
 `;
 
@@ -26,7 +26,7 @@ var footer = document.querySelector('footer');
 
 footer.innerHTML = `
     <div class="footer">
-        <a href="https://www.leagueoflegends.com/fr-fr/"><img src="../assets/img/riot-games.png"></a>
+        <a href="https://www.leagueoflegends.com/fr-fr/"><img src="/assets/img/riot-games.png"></a>
         
         <div class="team">
             <p>Equipe :</p>
