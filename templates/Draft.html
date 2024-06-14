@@ -10,15 +10,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/header.css">
         <link rel="stylesheet" href="../assets/css/footer.css">
-
+        <link rel="stylesheet" href="../assets/css/Draft.css">
         <link rel="icon" href="../assets/img/LoL-Symbol.png" type="image/x-icon">
         <link rel="shortcut icon" href="../assets/img/LoL-Symbol.png" type="image/x-icon">
     </head>
     <body>
         <header></header>
-        
-        <footer></footer>
-        <script src="../assets/js/main.js" async defer></script>
+        <div class="support_body">
+
+            <div class="support">
+                <div id="top_page">
+                    <form action="search" method="get">
+                        <input type="search" value="Search a comment ..." type="submit">
+                        <button type="submit"><img src="/assets/img/search.jpg" ></button>
+                    </form>
+                    <button id="topLike">Top Like</button>
+                    <button id="topReComment">Top Re Comment</button>
+                </div>
+            </div>
+    
+
+            <div id="Comment">
+                <div id="Pseudo_comment">
+                    <img src="/assets/img/icon_perso.png">
+                    <p>Toto<!--{{.pseudo}}--></p>
+                </div>
+                <p>Vayne Top is so rascist<!--{{.Title_Comment}}--></p> <!--Titre du commentaire-->
+                <div id="contentComment">
+                    <p>Celui qui pick vayne Top dois retourner sur adibou !<!--{{.Content_Comment}}--></p> <!--Contenu du commentaire-->
+                </div>
+            </div>
+            
+            
+            <footer></footer>
+            <script src="../assets/js/main.js" async defer></script>
+        </div>
     </body>
 </html>
 {{end}}

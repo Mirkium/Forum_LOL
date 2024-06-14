@@ -1,0 +1,58 @@
+body {
+    z-index: 1;
+    background: url(../img/Draft_background.png) no-repeat;
+    
+}
+
+.support_body {
+    background-color: rgb(28, 23, 23, 0.6);
+    
+}
+
+#top_page {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    background: linear-gradient(#1f1f20,#494747);
+    width: 80%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.support {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    margin-top: 2%;
+    align-items: center;
+}
+
+input {
+    background-color: #1d1c1c;
+    color: white;
+}
+
+#top_page > button {
+    border-radius: 20px;
+    width: 20%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: solid;
+}
+
+#top_page >button:hover {
+    background-color: #0c95de;
+    border: #fff solid;
+}
+
+
+#Comment {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d1c1c;
+    margin-left: 2%;
+    margin-right: 2%;
+}
