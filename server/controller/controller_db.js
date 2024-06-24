@@ -23,4 +23,6 @@ exports.getProfil = async (req, res) => {
 
 }
 
-exports.getLiked
+exports.getLiked = async (req, res) => {
+    
+}
