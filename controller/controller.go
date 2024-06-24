@@ -42,6 +42,11 @@ func EditHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func Profile(w http.ResponseWriter, r *http.Request) {
+	_, err := r.Cookie("user")
+	if err != nil {
+		http.Redirect(w, r, "/connexion", http.StatusSeeOther)
+	}
+
 	templates.Temp.ExecuteTemplate(w, "profile", nil)
 }
 

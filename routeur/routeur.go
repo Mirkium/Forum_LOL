@@ -8,9 +8,9 @@ import (
 func InitRouteur() {
 	controller.Start()
 	http.HandleFunc("/", controller.Error)
-	http.HandleFunc("/home", controller.Home)
-	http.HandleFunc("/connect", controller.Connect)
-	http.HandleFunc("/register", controller.Register)
+	http.HandleFunc("/accueil", controller.Home)
+	http.HandleFunc("/connexion", controller.Connect)
+	http.HandleFunc("/inscription", controller.Register)
 	http.HandleFunc("/create_post", controller.CreatePost)
 	http.HandleFunc("/handleCreate", controller.CreateHandler)
 	http.HandleFunc("/post", controller.Post)
@@ -26,4 +26,5 @@ func InitRouteur() {
 	http.HandleFunc("/categories/temporal", controller.Temporal)
 	http.HandleFunc("/messageHandle", controller.MessageHandler)
 	http.HandleFunc("/messageEditHandle", controller.EditMessageHandler)
+	//caca
 }
