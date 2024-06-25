@@ -1,0 +1,37 @@
+.footer {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer > a {
+    margin-top: 10px;
+    align-items: center;
+    text-decoration: none;
+    width: 20%;
+}
+
+.footer > a:hover {
+    
+    color: white;
+}
+
+.footer > a > img {
+    
+    width: 70%;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.team > p {
+    color: gray;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    font-size: 100%;
+}
