@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/template/assets/css/support.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <section class="support">
+            <h2>Support 24/7</h2>
+            <div class="support-content">
+                <p>Bienvenue dans notre centre de support 24/7. Nous sommes ici pour vous aider à tout moment.</p>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <h3>Chat en direct</h3>
+                        <p>Parlez directement avec nos agents en ligne.</p>
+                        <button onclick="location.href='/chat'">Démarrer le chat</button>
+                    </div>
+                    <div class="contact-method">
+                        <h3>Email</h3>
+                        <p>Envoyez-nous un email et nous vous répondrons dans les plus brefs délais.</p>
+                        <button onclick="location.href='mailto:support@novamarket.com'">Envoyer un email</button>
+                    </div>
+                    <div class="contact-method">
+                        <h3>Téléphone</h3>
+                        <p>Appelez-nous à tout moment au +33 1 23 45 67 89.</p>
+                        <button onclick="location.href='tel:+33123456789'">Appeler</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/template/assets/js/support.js" async defer></script> 
+</body>
+</html>
