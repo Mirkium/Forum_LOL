@@ -1,0 +1,50 @@
+CREATE TABLE IF NOT EXISTS User(
+    UserID INTEGER NOT NULL,
+    Username VARCHAR(50) NOT NULL,
+    Email VARCHAR(50),
+    Password VARCHAR(50) NOT NULL,
+    RegisterDate VARCHAR(10),
+    FriendsList VARCHAR(500) NOT NULL,
+    PRIMARY KEY(UserID)
+);
+
+
+CREATE TABLE IF NOT EXISTS Topic(
+    id INTEGER,
+    name VARCHAR(50),
+    PRIMARY KEY(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS Post(
+    id INTEGER,
+    Title VARCHAR(50),
+    Message VARCHAR(500) NOT NULL DEFAULT '[]',
+    AuthorId INTEGER,
+    TopicId INTEGER,
+    PRIMARY KEY(id),
+    FOREIGN KEY(AuthorId),
+    FOREIGN KEY(TopicId)
+);
+
+
+CREATE TABLE IF NOT EXISTS Message(
+    id INTEGER,
+    Content VARCHAR(500),
+    PostId INTEGER,
+    AuthorId INTEGER,
+    PRIMARY KEY(id),
+    FOREIGN KEY(AuthorId) REFERENCES user(UserID),
+    FOREIGN KEY(PostId) REFERENCES post(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS FriendRequest(
+	RequestID INTEGER NOT NULL,
+    UserID INTEGER NOT NULL,
+    ReceiverID INTEGER NOT NULL,
+    Status VARCHAR(10),
+    PRIMARY KEY(RequestID),
+    FOREIGN KEY(UserID) REFERENCES User(UserID),
+    FOREIGN KEY(ReceiverID) REFERENCES User(UserID)
+);
