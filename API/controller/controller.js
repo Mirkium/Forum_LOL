@@ -2,6 +2,7 @@ const Topics = require('../models/topics');
 const Users = require('../models/users');
 const Posts = require('../models/posts');
 const Messages = require('../models/messages');
+const axios = require('axios');
 
 
 exports.GetPost = async (req, res) => {
@@ -54,19 +55,7 @@ exports.CreatePost = async (req, res) => {
     const Content = req.params.Message;
     try {
         let id;
-        await fetch('localhost:3000/posts')
-        .then(async response => {
-            return await response.posts;
-        })
-        .then(async data => {
-            id = await data.length;
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                message: "internal server error."
-            });
-        });
+        await axios.get
         Posts.createPost(id, Topic, Author, Title, Content);
         res.status(200).json({
             message: "post created successfully."
@@ -127,20 +116,10 @@ exports.ModifyPost = async (req, res) => {
     const Message = req.params.NewMessage;
     const PostId = req.params.PostId;
     try {
-        let post;
-        await fetch(`localhost:3000/post/${PostId}`)
-        .then(async response => {
-            return await response.posts;
+        let post = await axios.get(`localhost:3000/post/${PostId}`)
+        .then(response => {
+            return response.data;
         })
-        .then(async data => {
-            post = await data;
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                message: "post not found."
-            });
-        });
         post.Content = Message;
         res.status(200).json({
             message: "post modified successfully."
@@ -165,5 +144,29 @@ exports.DelPost = async (req, res) => {
         res.status(500).json({
             message: 'internal server error.'
         });
+    }
+}
+
+exports.LikePost = async (req, res) => {
+    const UserId = req.params.id;
+    const PostId = req.params.PostId;
+    try {
+        let post;
+        fetch(`localhost:3000/post/${PostId}`)
+        .then(async response => {
+            return await response.json;
+        })
+        .then(async data => {
+            post = await data;
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(404).json({
+                message: 'post not found.'
+            });
+        });
+
+        let likes = post.Likes;
+        
     }
 }
