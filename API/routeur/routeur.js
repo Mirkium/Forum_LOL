@@ -4,7 +4,7 @@ const controller = require('../controller/controller');
 
 router.get('/post/:id', controller.GetPost);
 
-router.get('/CreatePost', controller.CreatePost);
+router.get('/CreatePost/:TopicId/:AuthorId/:Title/:Message', controller.CreatePost);
 
 router.get('/posts', controller.GetAllPosts);
 
@@ -12,7 +12,7 @@ router.get('/UserPosts/:UserId', controller.GetUserPosts);
 
 router.get('/posts/:categorie', controller.GetPosts);
 
-router.get('/ModifyPost/:PostId', controller.ModifyPost);
+router.get('/ModifyPost/:PostId/:NewMessage', controller.ModifyPost);
 
 router.get('/DeletePost/:PostId', controller.DelPost);
 

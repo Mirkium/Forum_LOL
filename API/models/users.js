@@ -1,4 +1,4 @@
-
+const connection = require('../config/config');
 
 class User {
     static getUsers() {
@@ -14,10 +14,10 @@ class User {
         });
     }
 
-    static getFriends(UserId) {
-        const query = 'SELECT FriendsLike FROM User WHERE UserID = ?;';
+    static getUser(UserId) {
+        const query = 'SELECT * FROM User WHERE UserID = ?;';
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [UserId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -52,4 +52,45 @@ class User {
             });
         });
     }
+
+    static modifyInfo(UserId, newUserName, newEmail, newPwd, newFriends) {
+        const query = `UPDATE User SET Username = ${newUserName}, Email = ${newEmail}, Password = ${newPwd}, FriendsList = ${newFriends} WHERE UserID = ${UserId};`;
+        return new Promise((resolve, reject) => {
+            connection.query(query, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static createUser(UserId, UserName, Email, Pwd, Date) {
+        const query = `INSERT INTO User VALUES (${UserId}, ${UserName}, ${Email}, ${Pwd}, ${Date}, '[]');`;
+        return new Promise((resolve, reject) => {
+            connection.query(query, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static deleteUser(UserId) {
+        const query = 'DELETE FROM User WHERE UserID = ?;';
+        return new Promise((resolve, reject) => {
+            connection.query(query, [UserId], (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
 }
+
+module.exports = User;

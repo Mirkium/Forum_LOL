@@ -39,6 +39,59 @@ class Posts {
             });
         });
     }
+
+    static getMessages(PostId) {
+        const query = 'SELECT * FROM Message WHERE PostId = ?';
+        return new Promise((resolve, reject) => {
+            connection.query(query, [PostId], (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static modifyPost(PostId, newContent) {
+        const query = `UPDATE Post SET Message = ${newContent} WHERE id = ${PostId};`;
+        return new Promise((resolve, reject) => {
+            connection.query(query, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static deletePost(PostId) {
+        const query = 'DELETE FROM Post WHERE id = ?;';
+        return new Promise((resolve, reject) => {
+            connection.query(query, [PostId], (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static createPost(PostId, TopicId, AuthorId, Title, Content) {
+        const query = `INSERT INTO Post VALUES(${PostId}, ${Title}, ${Content}, 0, ${AuthorId}, ${TopicId});`;
+        return new Promise((resolve, reject) => {
+
+            connection.query(query, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
 }
 
 module.exports = Posts;
