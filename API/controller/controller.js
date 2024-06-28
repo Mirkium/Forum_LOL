@@ -151,22 +151,19 @@ exports.LikePost = async (req, res) => {
     const UserId = req.params.id;
     const PostId = req.params.PostId;
     try {
-        let post;
-        fetch(`localhost:3000/post/${PostId}`)
-        .then(async response => {
-            return await response.json;
+        let post = axios.get(`localhost:3000/post/${PostId}`)
+        .then(response => {
+            return response.data;
         })
-        .then(async data => {
-            post = await data;
-        })
-        .catch(error => {
+        .catch (error => {
             console.log(error);
             res.status(404).json({
                 message: 'post not found.'
             });
-        });
+        })
 
         let likes = post.Likes;
-        
+        likes.push(UserId);
+        const query = `UPDATE Post SET Likes = ${likes} WHERE id = ${PostId};`;
     }
 }
