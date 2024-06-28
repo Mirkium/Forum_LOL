@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #titre {
     background: url(/assets/img/back_lol.jpeg) no-repeat;
     background-size: cover;
