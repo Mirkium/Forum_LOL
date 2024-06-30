@@ -1,0 +1,56 @@
+footer {
+    display: flex;
+    justify-content: center; /* Change from space-between to center */
+    align-items: center;
+    flex-direction: column; /* Add this line to stack the content vertically */
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+footer a img {
+    height: 40px;
+    margin-bottom: 20px; /* Change margin-right to margin-bottom */
+}
+
+.fondateur {
+    text-align: center; /* Change to center */
+    margin-bottom: 20px; /* Add some margin below */
+}
+
+.fondateur h4 {
+    margin-bottom: 10px;
+}
+
+.name_fondateur {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.name_fondateur p {
+    margin: 0;
+}
+
+.footer-content {
+    text-align: center; /* Change to center */
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
