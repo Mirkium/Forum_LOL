@@ -12,15 +12,24 @@
 <body>
     <%- include('../partials/header') %>
     <main>
-        <div class="Profile">
-            <h1>Profil</h1>
-            <p>Username: <%= user.username %></p>
-            <p>Email: <%= user.email %></p>
-            <p>Joined: <%= user.createdAt.toLocaleString() %></p>
-            <% if(user.bio) { %>
-                <p>Bio: <%= user.bio %></p>
-            <% } %>
-        </div>
+        <% if (!user) { %>
+            <div class="auth-options">
+                <h2>Veuillez vous connecter ou vous inscrire pour voir votre profil</h2>
+                <a href="/login">Se connecter</a>
+                <a href="/register">S'inscrire</a>
+            </div>
+        <% } else { %>
+            <div class="Profile">
+                <h1>Profil</h1>
+                <p>Username: <%= user.username %></p>
+                <p>Email: <%= user.email %></p>
+                <p>Joined: <%= user.createdAt.toLocaleString() %></p>
+                <% if (user.bio) { %>
+                    <p>Bio: <%= user.bio %></p>
+                <% } %>
+                <a href="/logout">Se déconnecter</a>
+            </div>
+        <% } %>
     </main>
     <%- include('../partials/footer') %>
 </body>
