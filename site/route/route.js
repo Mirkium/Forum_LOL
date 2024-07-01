@@ -9,6 +9,7 @@ router.get('/profil', controllers.getProfil);
 router.get('/salon/game', controllers.getGame);
 router.get('/salon/update', controllers.getUpdate);
 router.get('/salon/esport', controllers.getEsport);
+router.get('/message', controllers.getMessage);
 router.get('/', controllers.getError);
 
 
