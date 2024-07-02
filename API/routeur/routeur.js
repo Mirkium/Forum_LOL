@@ -19,6 +19,8 @@ router.get('/DeletePost/:PostId', controller.DelPost);
 
 router.get('/LikePost/:PostId/:id', controller.LikePost);
 
+router.get('/postLikes/:id', controller.PostLikes);
+
 router.get('/messages/:PostId', controller.GetMessages);
 
 router.get('/message/:id', controller.GetMessage);
@@ -30,6 +32,8 @@ router.get('/CreateMessage/:PostId/:AuthorId/:Content', controller.CreateMessage
 router.get('/DeleteMessage/:Message', controller.DelMessage);
 
 router.get('/LikeMessage/:MessageId/:id', controller.LikeMessage);
+
+router.get('/messageLikes/:id', controller.MessageLikes);
 
 router.get('/User/:id', controller.GetUser);
 

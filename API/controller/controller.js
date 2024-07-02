@@ -4,6 +4,7 @@ const Posts = Models.Posts;
 const Friends = Models.FriendRequest;
 const Topics = Models.Topics;
 const Messages = Models.Messages;
+const Likes = Models.Likes;
 console.log('models OK');
 
 exports.GetPost = async (req, res) => {
@@ -58,7 +59,15 @@ exports.CreatePost = async (req, res) => {
         let id;
         const posts = await Posts.getPosts();
         id = posts.length;
-        Posts.createPost(id, Topic, Author, Title, Content);
+        console.log(id);
+        try {
+            await Posts.createPost(id, Topic, Author, Title, Content);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "couldn't write post."
+            });
+        }
         res.status(200).json({
             message: "post created successfully."
         });
@@ -160,22 +169,33 @@ exports.LikePost = async (req, res) => {
                 message: 'post not found.'
             });
         } else {
-
-            
-            let likes = post.Likes;
-            console.log(likes);
-            let isLiked = false;
-            for(let i = 0; i < likes.length; i++) {
-                if(likes[i] == UserId) {
-                    likes.splice(i, 1);
-                    isLiked = true;
+            let like;
+            try {
+                like = await Likes.getLike(UserId, PostId, 'post');
+            } catch (err) {
+                console.log(err);
+                res.status(500).json({
+                    message: 'internal server error.'
+                });
+            }
+            if (like) {
+                try {
+                    await Likes.deleteLike()
+                } catch (err) {
+                    res.status(500).json({
+                        message: 'internal server error.'
+                    });
+                }
+            } else {
+                try {
+                    await Users.likePost(UserId, PostId, 'post');
+                } catch (err) {
+                    console.log(err);
+                    res.status(500).json({
+                        message: 'internal server error.'
+                    });
                 }
             }
-            if(!isLiked) {
-                likes.push(UserId);
-            }
-            console.log(likes);
-            Posts.updateLikes(PostId, likes);
             res.status(200).json({
                 message: 'post likes updated successfully.'
             });
@@ -299,23 +319,26 @@ exports.LikeMessage = async (req, res) => {
                 message: 'message not found.'
             });
         } else {
-            let likes = message.Likes;
-            console.log(likes);
-            let isLiked = false;
-            for(let i = 0; i < likes.length; i++) {
-                if(likes[i] == UserId) {
-                    likes.splice(i, 1);
-                    isLiked = true;
+            let like = await Likes.getLike(UserId, MessageId, 'message');
+            if (like) {
+                try {
+                    Likes.deleteLike(MessageId, UserId, 'message');
+                } catch (err) {
+                    console.log(err);
+                    res.status(500).json({
+                        message: 'internal server error.'
+                    });
+                }
+            } else {
+                try {
+                    await Users.likePost(UserId, MessageId, 'message');
+                } catch (err) {
+                    console.log(err);
+                    res.status(500).json({
+                        message: 'internal server error.'
+                    });
                 }
             }
-            if(!isLiked) {
-                likes.push(UserId);
-            }
-            console.log(likes);
-            Messages.updateLikes(MessageId, likes);
-            res.status(200).json({
-                message: 'post liked successfully.'
-            });
         }
     } catch(error) {
         console.log(error);
@@ -352,13 +375,18 @@ exports.CreateUser = async (req, res) => {
     const email = req.params.Email;
     const pwd = req.params.pwd;
     try {
-        const users = await Users.getUsers();
-        let id = users.length;
-        let date = new Date().now();
+        let date = new Date();
         let month = date.getMonth();
         ++month;
         let registerDate = date.getDate() + '/' + month + '/' + date.getFullYear();
-        Users.createUser(id, username, email, pwd, registerDate);
+        try {
+            Users.createUser(username, email, pwd, registerDate);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: 'internal server error.'
+            });
+        }
         res.status(200).json({
             message: 'user created successfully.'
         });
@@ -513,7 +541,6 @@ exports.DeleteFriend = async (req, res) => {
                 message: 'user not found.'
             });
         } else {
-
             let userFriends = user.FriendsList;
             let friendFriends = friend.FriendsList;
             for(let i = 0; i < userFriends.length; i++) {
@@ -550,6 +577,58 @@ exports.DeleteFriend = async (req, res) => {
         console.log(error);
         res.status(500).json({
             message: 'internal server error'
+        });
+    }
+}
+
+exports.PostLikes = async (req, res) => {
+    const PostId = req.params.id;
+    try {
+        let post = await Posts.getPost(PostId);
+        if (!post) {
+            res.status(404).json({
+                message: 'post not found.'
+            });
+        } else {
+            let likes = await Posts.getLikes(PostId);
+            if (!likes) {
+                likes = [];
+            }
+            res.status(200).json({
+                message: 'message found successfully',
+                likes
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: 'internal server error.'
+        });
+    }
+}
+
+exports.MessageLikes = async (req, res) => {
+    const MessageId = req.params.id;
+    try {
+        let post = await Messages.getMessage(MessageId);
+        if (!post) {
+            res.status(404).json({
+                message: 'post not found.'
+            });
+        } else {
+            let likes = await Messages.getLikes(MessageId);
+            if (!likes) {
+                likes = [];
+            }
+            res.status(200).json({
+                message: 'message found successfully',
+                likes
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: 'internal server error.'
         });
     }
 }

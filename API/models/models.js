@@ -55,9 +55,9 @@ exports.Posts = class Posts {
     }
 
     static modifyPost(PostId, newContent) {
-        const query = `UPDATE Post SET Message = ${newContent} WHERE id = ${PostId};`;
+        const query = `UPDATE Post SET Message = ? WHERE id = ?;`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [newContent, PostId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -81,10 +81,9 @@ exports.Posts = class Posts {
     }
 
     static createPost(PostId, TopicId, AuthorId, Title, Content) {
-        const query = `INSERT INTO Post VALUES(${PostId}, ${Title}, ${Content}, 0, ${AuthorId}, ${TopicId});`;
+        const query = `INSERT INTO Post (id, Title, Message, AuthorId, TopicId) VALUES(?, ?, ?, ?, ?);`;
         return new Promise((resolve, reject) => {
-
-            connection.query(query, (err, results) => {
+            connection.query(query, [PostId, Title, Content, AuthorId, TopicId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -94,10 +93,10 @@ exports.Posts = class Posts {
         });
     }
 
-    static updateLikes(PostId, Likes) {
-        const query = `UPDATE Post SET Likes = ${Likes} WHERE id = ${PostId};`;
+    static getLikes(id) {
+        const query = "SELECT * FROM message WHERE PostId = ? AND Type = 'post'";
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [id], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -123,9 +122,9 @@ exports.Messages = class Messages {
     }
 
     static modifyMessage(MessageId, NewMessage) {
-        const query = `UPDATE Message SET Content = ${NewMessage} WHERE id = ${MessageId};`;
+        const query = `UPDATE Message SET Content = ? WHERE id = ?;`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [NewMessage, MessageId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -149,9 +148,9 @@ exports.Messages = class Messages {
     }
 
     static postMessage(id, content, authorId, postId) {
-        const query = `INSERT INTO 'message' ('id', 'Content', 'Likes', 'PostId', 'AuthorId') VALUES ('${id}', '${content}', '[]', '${postId}', '${authorId}');`;
+        const query = `INSERT INTO 'message' ('id', 'Content', 'PostId', 'AuthorId') VALUES (?, ?, ?, ?);`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [id, content, postId, authorId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -161,10 +160,10 @@ exports.Messages = class Messages {
         });
     }
 
-    static updateLikes(id, likes) {
-        const query = `UPDATE Message SET Likes = ${likes} WHERE id = ${id};`;
+    static getLikes(id) {
+        const query = "SELECT * FROM message WHERE PostId = ? AND Type = 'message'";
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [id], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -206,7 +205,7 @@ exports.Topics = class Topics {
 exports.User = class User {
     static getUsers() {
         const query = 'SELECT * FROM Post WHERE 1;';
-        return new Prommise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             connection.query(query, (err, results) => {
                 if (err) {
                     reject(err);
@@ -256,10 +255,10 @@ exports.User = class User {
         });
     }
 
-    static modifyInfo(UserId, newUserName, newEmail, newPwd, newFriends) {
-        const query = `UPDATE User SET Username = ${newUserName}, Email = ${newEmail}, Password = ${newPwd}, FriendsList = ${newFriends} WHERE UserID = ${UserId};`;
+    static modifyInfo(UserId, newUserName, newEmail, newPwd) {
+        const query = `UPDATE User SET Username = ?, Email = ?, Password = ? WHERE UserID = ?;`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [newUserName, newEmail, newPwd, UserId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -269,10 +268,10 @@ exports.User = class User {
         });
     }
 
-    static createUser(UserId, UserName, Email, Pwd, Date) {
-        const query = `INSERT INTO User VALUES (${UserId}, ${UserName}, ${Email}, ${Pwd}, ${Date}, '[]');`;
+    static createUser(UserName, Email, Pwd, Date) {
+        const query = `INSERT INTO User VALUES (0, ?, ?, ?, ?);`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [UserName, Email, Pwd, Date], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -295,10 +294,10 @@ exports.User = class User {
         });
     }
 
-    static likePost(PostId, likes) {
-        const query = `UPDATE Post SET Likes = ${likes} WHERE id = ${PostId};`;
+    static likePost(UserId, PostId, type) {
+        const query = `INSERT INTO likes VALUES(?, ?, ?)`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [UserId, PostId, type], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -309,9 +308,9 @@ exports.User = class User {
     }
 
     static sendFriendRequest(id, SenderId, ReceiveId) {
-        const query = `INSERT INTO friendrequest VALUES(${id}, ${SenderId}, ${ReceiveId}, 'pending');`;
+        const query = `INSERT INTO friendrequest VALUES (?, ?, ?, 'pending');`;
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [id, SenderId, ReceiveId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -321,17 +320,17 @@ exports.User = class User {
         });
     }
 
-    static updateFriends(id, friends) {
-        const query = `UPDATE User SET FriendsList = ${friends} WHERE id = ${id};`;
+    static acceptRequest(UserId, FriendId) {
+        const query = "UPDATE friendrequest SET Status = 'accepted' WHERE ReceiveId = ? AND SendId = ?;";
         return new Promise((resolve, reject) => {
-            connection.query(query, (err, results) => {
+            connection.query(query, [UserId, FriendId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(results);
                 }
-            });
-        });
+            })
+        })
     }
 }
 
@@ -392,6 +391,34 @@ exports.FriendRequest = class FriendRequest {
         const query = `DELETE FROM friendrequest WHERE RequestId = ?;`;
         return new Promise((resolve, reject) => {
             connection.query(query, [id], (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+}
+
+exports.Likes = class Like {
+    static deleteLike(id, UserId, type) {
+        const query = 'DELETE FROM likes WHERE UserId = ? AND PostId = ? AND type = ?';
+        return new Promise((resolve, reject) => {
+            connection.query(query, [UserId, id, type], (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static getLike(UserId, PostId, type) {
+        const query = 'SELECT * FROM likes WHERE UserId = ? AND PostId = ?, type = ?;';
+        return new Promise((resolve, reject) => {
+            connection.query(query, [UserId, PostId, type], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
