@@ -2,7 +2,7 @@
 ## Introduction
 Ce projet vise à créer une plateforme de forum où les utilisateurs peuvent s'inscrire, se connecter, créer des discussions (topics), y répondre, et interagir avec d'autres utilisateurs. Le forum inclut des fonctionnalités de gestion avancée pour les administrateurs et des options de personnalisation pour les utilisateurs. Le projet est développé en utilisant [Langage de programmation choisi] et MySQL pour le stockage des données.
 
-## Fonctionnalités
+### Fonctionnalités
 ## Utilisateurs
 Inscription : Les utilisateurs peuvent s'inscrire en fournissant un nom d'utilisateur (lettres et chiffres uniquement), une adresse mail, et un mot de passe respectant les critères de sécurité.
 Connexion : Les utilisateurs peuvent se connecter en utilisant leur nom d'utilisateur ou adresse mail et mot de passe.
@@ -22,9 +22,11 @@ Dashboard : Les administrateurs peuvent accéder à un tableau de bord pour admi
 Installation et Lancement
 
 ## Prérequis pour faire fonctionnée le Projet 
-[Langage de programmation choisi] installé sur votre machine
+Les codes suivants : Ejs , html , css , javascript : installé sur votre machine
 MySQL installé 
- ##Installation requises :  Installation des dépendances :
+npm install express ejs mysql express-session = express-session : Un middleware pour gérer les sessions
+
+## Installation requises :  Installation des dépendances :
 node -v
 npm -v
 npm init
@@ -51,9 +53,8 @@ DB_USER=votre_utilisateur
 DB_PASS=votre_mot_de_passe
 DB_NAME=forum_db
 
-
-## Les Routes
-## Routes pour les Vues
+### Les Routes
+Routes pour les Vues :
 Page d'accueil : GET /
 Inscription : GET /signup
 Connexion : GET /login
@@ -87,7 +88,7 @@ Nom 2 : Gestion des Topics et Messages
 Nom 3 : Mise en place de la base de données
 Nom 4 : Tests et Assurance qualité
 
-## Gestion du Temps
+### Gestion du Temps
 Planification Hebdomadaire : Réunions pour évaluer l'avancement et ajuster les priorités.
 Définition des Priorités : Priorité donnée aux fonctionnalités critiques avant les fonctionnalités secondaires.
 Stratégie de Documentation
