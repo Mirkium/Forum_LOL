@@ -80,10 +80,10 @@ exports.Posts = class Posts {
         });
     }
 
-    static createPost(PostId, TopicId, AuthorId, Title, Content) {
-        const query = `INSERT INTO Post (id, Title, Message, AuthorId, TopicId) VALUES(?, ?, ?, ?, ?);`;
+    static createPost(TopicId, AuthorId, Title, Content) {
+        const query = `INSERT INTO Post (id, Title, Message, AuthorId, TopicId) VALUES(0, ?, ?, ?, ?);`;
         return new Promise((resolve, reject) => {
-            connection.query(query, [PostId, Title, Content, AuthorId, TopicId], (err, results) => {
+            connection.query(query, [Title, Content, AuthorId, TopicId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -147,10 +147,10 @@ exports.Messages = class Messages {
         });
     }
 
-    static postMessage(id, content, authorId, postId) {
-        const query = `INSERT INTO 'message' ('id', 'Content', 'PostId', 'AuthorId') VALUES (?, ?, ?, ?);`;
+    static postMessage(content, authorId, postId) {
+        const query = `INSERT INTO 'message' ('id', 'Content', 'PostId', 'AuthorId') VALUES (0, ?, ?, ?);`;
         return new Promise((resolve, reject) => {
-            connection.query(query, [id, content, postId, authorId], (err, results) => {
+            connection.query(query, [content, postId, authorId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -307,10 +307,10 @@ exports.User = class User {
         });
     }
 
-    static sendFriendRequest(id, SenderId, ReceiveId) {
-        const query = `INSERT INTO friendrequest VALUES (?, ?, ?, 'pending');`;
+    static sendFriendRequest(SenderId, ReceiveId) {
+        const query = `INSERT INTO friendrequest VALUES (0, ?, ?, 'pending');`;
         return new Promise((resolve, reject) => {
-            connection.query(query, [id, SenderId, ReceiveId], (err, results) => {
+            connection.query(query, [SenderId, ReceiveId], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {

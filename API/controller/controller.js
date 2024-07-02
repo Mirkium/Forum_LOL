@@ -56,12 +56,8 @@ exports.CreatePost = async (req, res) => {
     const Title = req.params.Title;
     const Content = req.params.Message;
     try {
-        let id;
-        const posts = await Posts.getPosts();
-        id = posts.length;
-        console.log(id);
         try {
-            await Posts.createPost(id, Topic, Author, Title, Content);
+            await Posts.createPost(Topic, Author, Title, Content);
         } catch (err) {
             console.log(err);
             res.status(500).json({
@@ -279,10 +275,14 @@ exports.CreateMessage = async (req, res) => {
     const Author = req.params.AuthorId;
     const Content = req.params.Content;
     try {
-        let id;
-        const messages = await Messages.getMessages();
-        id = messages.length;
-        Messages.PostMessage(id, PostId, Author, Content);
+        try {
+            Messages.PostMessage(PostId, Author, Content);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({
+                message: 'internal server error.'
+            });
+        }
         res.status(200).json({
             message: "post created successfully."
         });
@@ -502,16 +502,14 @@ exports.SendRequest = async (req, res) => {
     const ReceiveId = req.params.ReceiveId;
     const SendId = req.params.SendId;
     try {
-        const requests = await Friends.getRequests();
         const request = await Friends.getRequest(ReceiveId, SendId);
         if (request) {
             res.status(400).json({
                 message: 'request already exists.'
             });
         } else {
-            let id = requests.length;
             try {
-                Users.sendFriendRequest(id, SendId, ReceiveId);
+                Users.sendFriendRequest(SendId, ReceiveId);
             } catch (err) {
                 console.log(err);
                 res.status(404).json({
