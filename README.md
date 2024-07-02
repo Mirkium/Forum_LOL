@@ -1,6 +1,6 @@
 ### Projet de Forum
 ## Introduction
-Ce projet vise à créer une plateforme de forum où les utilisateurs peuvent s'inscrire, se connecter, créer des discussions (topics), y répondre, et interagir avec d'autres utilisateurs. Le forum inclut des fonctionnalités de gestion avancée pour les administrateurs et des options de personnalisation pour les utilisateurs. Le projet est développé en utilisant [Langage de programmation choisi] et MySQL pour le stockage des données.
+Ce projet vise à créer une plateforme de forum où les utilisateurs peuvent s'inscrire, se connecter, créer des discussions (topics), y répondre, et interagir avec d'autres utilisateurs. Le forum inclut des fonctionnalités de gestion avancée pour les administrateurs et des options de personnalisation pour les utilisateurs. Le projet est développé en utilisant ejs , css , javascript et MySQL pour le stockage des données.
 
 ### Fonctionnalités
 ## Utilisateurs
