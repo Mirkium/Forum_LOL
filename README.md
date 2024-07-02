@@ -1,6 +1,6 @@
 ### Projet de Forum
 ## Introduction
-Ce projet vise à créer une plateforme de forum où les utilisateurs peuvent s'inscrire, se connecter, créer des discussions (topics), y répondre, et interagir avec d'autres utilisateurs. Le forum inclut des fonctionnalités de gestion avancée pour les administrateurs et des options de personnalisation pour les utilisateurs. Le projet est développé en utilisant ejs , css , javascript et MySQL pour le stockage des données.
+Ce projet vise à créer une plateforme de forum où les utilisateurs peuvent s'inscrire, se connecter, créer des discussions (topics), y répondre, et interagir avec d'autres utilisateurs. Le forum inclut des fonctionnalités de gestion avancée pour les administrateurs et des options de personnalisation pour les utilisateurs. Le projet est développé en utilisant : ejs , css , javascript et MySQL pour le stockage des données.
 
 ### Fonctionnalités
 ## Utilisateurs
@@ -22,7 +22,7 @@ Dashboard : Les administrateurs peuvent accéder à un tableau de bord pour admi
 Installation et Lancement
 
 ## Prérequis pour faire fonctionnée le Projet 
-Les codes suivants : Ejs , html , css , javascript : installé sur votre machine
+Les codes suivants : ejs , css , javascript : installé sur votre machine
 MySQL installé 
 npm install express ejs mysql express-session = express-session : Un middleware pour gérer les sessions
 
@@ -55,19 +55,19 @@ DB_NAME=forum_db
 
 ### Les Routes
 Routes pour les Vues :
-Page d'accueil : GET /
-Inscription : GET /signup
-Connexion : GET /login
-Profil utilisateur : GET /profile/:username
-Liste des topics : GET /topics
-Voir un topic : GET /topic/:id
-Routes pour le Traitement de Données
-Inscription : POST /signup
-Connexion : POST /login
-Création de topic : POST /topic
-Envoi de message : POST /topic/:id/message
-Like/Dislike message : POST /message/:id/like POST /message/:id/dislike
-Recherche : GET /search
+- Page d'accueil : GET /
+- Inscription : GET /signup
+- Connexion : GET /login
+- Profil utilisateur : GET /profile/:username
+- Liste des topics : GET /topics
+- Voir un topic : GET /topic/:id
+- Routes pour le Traitement de Données
+- Inscription : POST /signup
+- Connexion : POST /login
+- Création de topic : POST /topic
+- Envoi de message : POST /topic/:id/message
+- Like/Dislike message : POST /message/:id/like POST /message/:id/dislike
+- Recherche : GET /search
 
 ### Inscription et Connexion
 Création et Gestion de Topics
@@ -82,11 +82,12 @@ Phase de Planification : Définition des fonctionnalités et de l'architecture.
 Phase de Développement : Implémentation des fonctionnalités de base.
 Phase de Test : Test des fonctionnalités et correction des bugs.
 Phase de Documentation : Rédaction de la documentation et préparation de l'oral.
-Répartition des Tâches
-Nom 1 : Inscription et Connexion des utilisateurs
-Nom 2 : Gestion des Topics et Messages
-Nom 3 : Mise en place de la base de données
-Nom 4 : Tests et Assurance qualité
+
+Répartition des Tâches entre nous 3 (fabio,hugo,alexandre)
+- Inscription et Connexion des utilisateurs
+- Gestion des Topics et Messages
+- Mise en place de la base de données
+- Tests et Assurance qualité
 
 ### Gestion du Temps
 Planification Hebdomadaire : Réunions pour évaluer l'avancement et ajuster les priorités.
