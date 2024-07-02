@@ -21,24 +21,16 @@ Like/Dislike : Les utilisateurs peuvent liker ou disliker des messages. Un utili
 Dashboard : Les administrateurs peuvent accéder à un tableau de bord pour administrer la plateforme, incluant la modification de l'état des topics, la suppression de topics, la suppression de messages, et le bannissement de comptes utilisateurs.
 Installation et Lancement
 
-## Prérequis pour faire fonctionnée le Projet 
+## Prérequis pour faire fonctionner le Projet 
 Les codes suivants : ejs , css , javascript : installé sur votre machine
 MySQL installé 
 npm install express ejs mysql express-session = express-session : Un middleware pour gérer les sessions
 
 ## Installation requises :  Installation des dépendances :
-node -v
-npm -v
-npm init
-npm install express
-(npm i express)
-npm i supervisor --save-dev
-npm i cors
+Installer les dépendances npm dans le dossier API puis dans le dossier site.
 
-## Instructions
-Clonez le dépôt :
-git clone https: https://github.com/Mirkium/Forum_LOL
-cd forum ....
+## Instructions :
+Lancer l'api dans le dossier API puis lancer le site dans le dossier site.
 
 ## Configuration de la base de données :
 Créez une base de données MySQL :
@@ -46,19 +38,12 @@ Code inclus directement dans le code (db)
 
 ## Configuration de l'application :
 
-## Configurez les variables d'environnement dans un fichier .env :
-env
-DB_HOST=localhost
-DB_USER=votre_utilisateur
-DB_PASS=votre_mot_de_passe
-DB_NAME=forum_db
-
 ### Les Routes
 Routes pour les Vues :
 - Page d'accueil : GET /
 - Inscription : GET /signup
 - Connexion : GET /login
-- Profil utilisateur : GET /profile/:username
+- Profil utilisateur : GET /profile/:id
 - Liste des topics : GET /topics
 - Voir un topic : GET /topic/:id
 - Routes pour le Traitement de Données
@@ -69,13 +54,6 @@ Routes pour les Vues :
 - Like/Dislike message : POST /message/:id/like POST /message/:id/dislike
 - Recherche : GET /search
 
-### Inscription et Connexion
-Création et Gestion de Topics
-Envoi de Messages et Interaction (Like/Dislike)
-Fonctionnalités Administratives
-
-### Synthèse du Déroulement du Projet
-## Décomposition du Projet
 ## Le projet a été décomposé en plusieurs phases :
 
 Phase de Planification : Définition des fonctionnalités et de l'architecture.
@@ -83,25 +61,7 @@ Phase de Développement : Implémentation des fonctionnalités de base.
 Phase de Test : Test des fonctionnalités et correction des bugs.
 Phase de Documentation : Rédaction de la documentation et préparation de l'oral.
 
-Répartition des Tâches entre nous 3 (fabio,hugo,alexandre)
-- Inscription et Connexion des utilisateurs
-- Gestion des Topics et Messages
-- Mise en place de la base de données
-- Tests et Assurance qualité
-
-### Gestion du Temps
-Planification Hebdomadaire : Réunions pour évaluer l'avancement et ajuster les priorités.
-Définition des Priorités : Priorité donnée aux fonctionnalités critiques avant les fonctionnalités secondaires.
-Stratégie de Documentation
-Utilisation de Google Docs : Pour partager et collaborer sur la documentation en temps réel.
-Rédaction Continue : Documenter chaque fonctionnalité au fur et à mesure de son implémentation.
-Démonstration
-Préparez une démonstration pour montrer le fonctionnement de la plateforme, en mettant l'accent sur les points suivants :
-
-### Conclusion
-Ce projet de forum a été une excellente opportunité pour notre équipe de mettre en pratique nos compétences en développement web et gestion de base de données. Nous avons conçu et implémenté une plateforme complète permettant aux utilisateurs de communiquer et d'interagir de manière structurée et sécurisée.
-
-Le développement de ce forum nous a permis de relever plusieurs défis techniques, notamment en matière de gestion des utilisateurs, de sécurisation des données, et de gestion des contenus générés par les utilisateurs. En intégrant des fonctionnalités avancées telles que la gestion des likes/dislikes, les topics privés/publics, et un tableau de bord d'administration, nous avons réussi à créer une plateforme robuste et flexible.
+## Conclusion
 
 L'architecture du projet, basée sur les languages suivants : HTML , css , ejs , javascript et MySQL, garantit une performance et une scalabilité optimales, tout en facilitant les futures extensions et améliorations.
 
