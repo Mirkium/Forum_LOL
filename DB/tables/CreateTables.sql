@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS User(
     Password VARCHAR(50) NOT NULL,
     RegisterDate VARCHAR(10),
     FriendsList VARCHAR(500) NOT NULL,
-    PRIMARY KEY(UserID)
+    PRIMARY KEY(UserID),
+    UNIQUE(Email)
 );
 
 
