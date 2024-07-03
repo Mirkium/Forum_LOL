@@ -25,9 +25,18 @@ Installation et Lancement
 Les codes suivants : ejs , css , javascript : installé sur votre machine
 MySQL installé 
 npm install express ejs mysql express-session = express-session : Un middleware pour gérer les sessions
+npm install express-session
+
 
 ## Installation requises :  Installation des dépendances :
 Installer les dépendances npm dans le dossier API puis dans le dossier site.
+- node -v
+- npm -v
+- npm init
+- npm install express
+- (npm i express)
+- npm i supervisor --save-dev
+- npm i cors
 
 ## Instructions :
 Lancer l'api dans le dossier API puis lancer le site dans le dossier site.
