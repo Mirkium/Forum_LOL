@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Forum LoL - Post</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/assets/css/post.css">
@@ -14,14 +14,26 @@
     </head>
     <body>
         <%- include("../partials/header") %>
-        <div class="post">
-            <div class="line_profil">
-                <a href="/profil"><img src="/assets/img/icon_perso.png" alt=""></a>
-                <p><!-- Nom du profil -->Toto</p> <!-- Toto n'est qu'un exemple -->
+        <div class="support">
+            <div class="post">
+                <div class="line_profil">
+                    <a href="/profil"><img src="/assets/img/icon_perso.png" alt=""></a>
+                    <input type="text" placeholder="salon...">
+                    <p><!-- Nom du profil -->Toto</p> <!-- Toto n'est qu'un exemple -->
+                </div>
+                <div class="divComment">
+                    <input type="text" id="titre" placeholder="Enter your title...">
+                    <input type="text" id="comment" placeholder="Enter your text...">
+                </div>
+                <div class="bottom_post">
+                    <input type="file" id="file">
+                    <a href="/accueil" id="post">Post</a>
+                </div>
             </div>
-            <input type="text">
-            <input type="file" id="file">
         </div>
+
+
+
         
         <%- include("../partials/footer") %>
         <script src="/assets/js/post.js" async defer></script>
