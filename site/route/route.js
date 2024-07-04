@@ -13,7 +13,8 @@ router.get('/salon/game', controllers.getGame);
 router.get('/salon/update', controllers.getUpdate);
 router.get('/salon/esport', controllers.getEsport);
 router.get('/message', controllers.getMessage);
-router.get('/post', controllers.getPost)
+router.get('/post', controllers.getPost);
+router.get('/post/:id', controllers.goToPost);
 router.get('/', controllers.getError);
 
 module.exports = router;

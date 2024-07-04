@@ -34,7 +34,17 @@ exports.getRegister = async (req, res) => {
 
 exports.postRegister = async (req, res) => {
     const { name, email, password } = req.body;
-    const user = { username: name, email: email, password: password, createdAt: new Date(), bio: 'Ceci est une bio exemple.' };
+    const user = { username: name, email: email, password: password, bio: 'Ceci est une bio exemple.' };
+    await fetch(`localhost:8080/CreateUser/${user.username}/${user.email}/${user.pwd}`)
+    .then(async response => {
+        return await response;
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'error while posting post.'
+        });
+    });
     users.push(user);
     req.session.user = user;
     res.redirect('/profil');
@@ -76,5 +86,9 @@ exports.getPost = async (req, res) => {
 exports.getError = async (req, res) => {
     res.render('error');
 };
+
+exports.goToPost = async (req, res) => {
+    res.render('post');
+}
 
 module.exports.isAuthenticated = isAuthenticated;

@@ -22,19 +22,14 @@
                     <p><!-- Nom du profil -->Toto</p> <!-- Toto n'est qu'un exemple -->
                 </div>
                 <div class="divComment">
-                    <input type="text" id="titre" placeholder="Enter your title...">
-                    <input type="text" id="comment" placeholder="Enter your text...">
+                    <input type="text" id="titre" placeholder="Enter your title..." required>
+                    <input type="text" id="comment" placeholder="Enter your text..." required>
                 </div>
                 <div class="bottom_post">
-                    <input type="file" id="file">
                     <a href="/accueil" id="post">Post</a>
                 </div>
             </div>
         </div>
-
-
-
-        
         <%- include("../partials/footer") %>
         <script src="/assets/js/post.js" async defer></script>
     </body>

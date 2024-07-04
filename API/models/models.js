@@ -403,7 +403,7 @@ exports.FriendRequest = class FriendRequest {
 
 exports.Likes = class Like {
     static deleteLike(id, UserId, type) {
-        const query = 'DELETE FROM likes WHERE UserId = ? AND PostId = ? AND type = ?';
+        const query = `DELETE FROM likes WHERE UserId = ? AND PostId = ? AND type = ?`;
         return new Promise((resolve, reject) => {
             connection.query(query, [UserId, id, type], (err, results) => {
                 if (err) {

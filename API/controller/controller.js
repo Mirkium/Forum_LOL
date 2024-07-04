@@ -176,7 +176,7 @@ exports.LikePost = async (req, res) => {
             }
             if (like) {
                 try {
-                    await Likes.deleteLike()
+                    await Likes.deleteLike(PostId, UserId, 'post');
                 } catch (err) {
                     res.status(500).json({
                         message: 'internal server error.'
@@ -313,7 +313,7 @@ exports.LikeMessage = async (req, res) => {
     const MessageId = req.params.MessageId;
     const UserId = req.params.id;
     try {
-        let message = await Message.getMessage(MessageId);
+        let message = await Messages.getMessage(MessageId);
         if (!message) {
             res.status(404).json({
                 message: 'message not found.'
