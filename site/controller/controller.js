@@ -65,6 +65,14 @@ exports.getEsport = async (req, res) => {
     res.render('esport');
 };
 
+exports.getMessage = async (req, res) => {
+    res.render('message');
+};
+
+exports.getPost = async (req, res) => {
+    res.render('post')
+}
+
 exports.getError = async (req, res) => {
     res.render('error');
 };

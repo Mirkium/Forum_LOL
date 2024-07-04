@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Forum LoL - Accueil</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/css/Accueil.css">
-    <link rel="stylesheet" href="/assets/css/partials_css/header.css">
-    <link rel="stylesheet" href="/assets/css/partials_css/footer.css">
-    <link rel="icon" type="image/png" href="/assets/img/LoL-Symbol.png">
-</head>
-<body>
-    <%- include("../partials/header") %>
-    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Forum LoL - Accueil</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/css/Accueil.css">
+        <link rel="stylesheet" href="/assets/css/partials_css/header.css">
+        <link rel="stylesheet" href="/assets/css/partials_css/footer.css">
+        <link rel="icon" type="image/png" href="/assets/img/LoL-Symbol.png">
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+        
+        
     <div id="titre">
         <div class="back">
             <img src="/assets/img/League-of-Legends-Logo.png" >
+            <a href="/post">Ajouter un post</a>
+        </div>
+    </div>
+    <div class="support">
+        <H1>post</H1>
+        <div class="supportPostAccueil">
+            <div class="post">
+                <div class="lienProfil">
+                    <a href="/profil" id="iconeProfil"><img src="/assets/img/icon_perso.png" alt=""></a>
+                    <a href="/game" id="nameSalon"><p>salon/game</p></a>
+                    <p id="nameProfil">999+</p>
+                    
+                </div>
+                <p>Les Bronzes sont juste des Fer en winnerQ !</p>
+            </div>
         </div>
     </div>
 
-    <div id="post_like">
-        <div class="comment">
-            
-        </div>
-    </div>
+    
     
     <%- include("../partials/footer") %>
     

@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: radial-gradient(#363737, #181818);
     color: #333;
 }
 
@@ -10,37 +10,99 @@ body {
     background: url(/assets/img/back_lol.jpeg) no-repeat;
     background-size: cover;
     z-index: 1;
+    border-bottom: solid 5px goldenrod;
 }
 
 .back {
     background-color: rgba(0, 135, 253, 0.7);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .back > img {
     width: 70%;
 }
 
-main {
-    padding: 20px;
+.back > a {
+    color: #fff;
+    font-weight: bold;
+    background-color: orange;
+    border-radius: 20px;
+    border: 2px orange solid;
+    font-size: 1.6em;
+    padding: 8px;
+    margin-bottom: 2%;
+    text-decoration: none;
 }
 
-.Profile {
-    max-width: 600px;
-    margin: 0 auto;
+.back > a:hover {
+    
+    border: 2px solid black;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #000000;
 }
 
-.Profile h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+/*================================================================*/
+
+/*=============================POST===============================*/
+
+.support {
+    background-color: aliceblue;
+    padding-bottom: 5%;
 }
 
-.Profile p {
-    font-size: 18px;
-    margin: 10px 0;
+H1 {
+    color: #000000;
+    text-align: center;
 }
+
+.supportPostAccueil {
+    display: flex;
+    justify-content: center;
+}
+
+.post {
+    background-color: #fff;
+    width: 60%;
+    box-shadow: 5px 5px 30px black;
+}
+
+.lienProfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    margin: 5px;
+}
+
+#iconeProfil {
+    width: 20%;
+}
+
+#iconeProfil > img {
+    width: 50%;
+    border-radius: 50%;
+    background-color: #fff;
+    border: solid black;
+}
+
+#nameSalon {
+    color: #363737;
+    text-decoration: none;
+}
+
+#nameProfil {
+    color: black;
+    text-decoration: none;
+}
+
+.post > p {
+    border-top: #333 solid;
+    width: 95%;
+    color: black;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+

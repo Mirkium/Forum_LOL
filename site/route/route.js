@@ -12,6 +12,8 @@ router.get('/logout', controllers.logout);
 router.get('/salon/game', controllers.getGame);
 router.get('/salon/update', controllers.getUpdate);
 router.get('/salon/esport', controllers.getEsport);
+router.get('/message', controllers.getMessage);
+router.get('/post', controllers.getPost)
 router.get('/', controllers.getError);
 
 module.exports = router;
