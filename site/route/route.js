@@ -14,6 +14,7 @@ router.get('/salon/game', controllers.getGame);
 router.get('/salon/update', controllers.getUpdate);
 router.get('/salon/esport', controllers.getEsport);
 router.get('/post', controllers.getPost);
+router.post('/post', controllers.postPost);
 router.get('/post/:id', controllers.goToPost);
 router.get('/', controllers.getError);
 

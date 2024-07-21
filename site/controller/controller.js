@@ -77,7 +77,7 @@ exports.getGame = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('game', posts);
+    res.render('game', {posts});
 };
 
 exports.getUpdate = async (req, res) => {
@@ -92,7 +92,7 @@ exports.getUpdate = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('game', posts);
+    res.render('update', {posts});
 };
 
 exports.getEsport = async (req, res) => {
@@ -107,22 +107,12 @@ exports.getEsport = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('game', posts);
+    res.render('esport', {posts});
 };
 
 exports.getPost = async (req, res) => {
-    let posts;
-    fetch('http://localhost:8080/posts')
-    .then( async response => {
-        posts = await response.posts;
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            message: 'internal server error.'
-        });
-    });
-    res.render('posts', {posts});
+    if (user.)
+    res.render('posts');
 }
 
 exports.getError = async (req, res) => {
@@ -164,13 +154,23 @@ exports.getUser = async (req, res) => {
             console.log(err);
             res.redirect('/user');
         });
-        res.render('profil', userInfo);
+        res.render('profil', {userInfo});
     } catch (err) {
         console.log(err);
         res.status(500).json({
             message: 'internal server error.'
         });
     }
+}
+
+exports.postPost = async (req, res) => {
+    let { topicId, title, content, userId } = req.body;
+    await fetch(`http://localhost:8080/CreatePost/${topicId}/${userId}/${title}/${content}`)
+    .catch(err => {
+        console.log(err);
+        res.status(500);
+    });
+    res.redirect("/accueil");
 }
 
 module.exports.isAuthenticated = isAuthenticated;
