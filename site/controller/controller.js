@@ -77,7 +77,7 @@ exports.getGame = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('game', posts);
+    res.render('game',{ posts });
 };
 
 exports.getUpdate = async (req, res) => {
@@ -92,7 +92,7 @@ exports.getUpdate = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('game', posts);
+    res.render('update', { posts });
 };
 
 exports.getEsport = async (req, res) => {
@@ -107,7 +107,7 @@ exports.getEsport = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('game', posts);
+    res.render('esport',{ posts });
 };
 
 exports.getPost = async (req, res) => {
@@ -122,7 +122,7 @@ exports.getPost = async (req, res) => {
             message: 'internal server error.'
         });
     });
-    res.render('posts', {posts});
+    res.render('post', {posts});
 }
 
 exports.getError = async (req, res) => {

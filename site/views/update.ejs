@@ -14,6 +14,23 @@
     <body>
         <%- include("../partials/header") %>
 
+        <div class="support">
+            <H1>post</H1>
+            <% posts.forEach(post => { %>
+                <div class="supportPostAccueil">
+                    <div class="post">
+                        <div class="lienProfil">
+                            <a href="/profil" id="iconeProfil"><img src="/assets/img/icon_perso.png" alt=""></a>
+                            <a href="/salon/update" id="nameSalon"><p>salon/update</p></a>
+                            <p id="nameProfil">nameProfil</p>
+    
+                        </div>
+                        <h1><%= post.Title %></h1>
+                        <p><%= post.Message %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
         <%- include("../partials/footer")%>
         
         <script src="" async defer></script>

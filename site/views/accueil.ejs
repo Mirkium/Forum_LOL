@@ -23,17 +23,20 @@
     </div>
     <div class="support">
         <H1>post</H1>
-        <div class="supportPostAccueil">
-            <div class="post">
-                <div class="lienProfil">
-                    <a href="/profil" id="iconeProfil"><img src="/assets/img/icon_perso.png" alt=""></a>
-                    <a href="/salon/game" id="nameSalon"><p>salon/game</p></a>
-                    <p id="nameProfil">999+</p>
+        <% posts.forEach(post => { %>
+            <div class="supportPostAccueil">
+                <div class="post">
+                    <div class="lienProfil">
+                        <a href="/profil" id="iconeProfil"><img src="/assets/img/icon_perso.png" alt=""></a>
+                        <a href="/salon/game" id="nameSalon"><p>salon/game</p></a>
+                        <p id="nameProfil">nameProfil</p>
 
+                    </div>
+                    <h1><%= post.Title %></h1>
+                    <p><%= post.Message %></p>
                 </div>
-                <p>Les Bronzes sont juste des Fer en winnerQ !</p>
             </div>
-        </div>
+        <% }); %>
     </div>
 
     
