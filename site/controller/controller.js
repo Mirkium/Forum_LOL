@@ -1,4 +1,4 @@
-const users = []; // Utiliser une base de données pour gérer les utilisateurs en production
+const users = [];
 
 // Middleware pour vérifier si l'utilisateur est authentifié
 function isAuthenticated(req, res, next) {
@@ -35,7 +35,7 @@ exports.getRegister = async (req, res) => {
 exports.postRegister = async (req, res) => {
     const { name, email, password } = req.body;
     const user = { username: name, email: email, password: password, bio: 'Ceci est une bio exemple.' };
-    await fetch(`localhost:8080/CreateUser/${user.username}/${user.email}/${user.pwd}`)
+    await fetch(`http://localhost:8080/CreateUser/${user.username}/${user.email}/${user.pwd}`)
     .then(async response => {
         return await response;
     })
@@ -64,23 +64,65 @@ exports.logout = async (req, res) => {
 };
 
 exports.getGame = async (req, res) => {
-    res.render('game');
+    console.log("Game")
+    let posts;
+    await fetch('http://localhost:8080/posts/1')
+    .then(async response => {
+        console.log("Response : ", response);
+        posts = await response.posts;
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'internal server error.'
+        });
+    });
+    res.render('game', posts);
 };
 
 exports.getUpdate = async (req, res) => {
-    res.render('update');
+    let posts;
+    await fetch('http://localhost:8080/posts/2')
+    .then(async response => {
+        posts = await response.posts;
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'internal server error.'
+        });
+    });
+    res.render('game', posts);
 };
 
 exports.getEsport = async (req, res) => {
-    res.render('esport');
-};
-
-exports.getMessage = async (req, res) => {
-    res.render('message');
+    let posts;
+    await fetch('http://localhost:8080/posts/3')
+    .then(async response => {
+        posts = await response.posts;
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'internal server error.'
+        });
+    });
+    res.render('game', posts);
 };
 
 exports.getPost = async (req, res) => {
-    res.render('post')
+    let posts;
+    fetch('http://localhost:8080/posts')
+    .then( async response => {
+        posts = await response.posts;
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'internal server error.'
+        });
+    });
+    res.render('posts', {posts});
 }
 
 exports.getError = async (req, res) => {
@@ -88,7 +130,47 @@ exports.getError = async (req, res) => {
 };
 
 exports.goToPost = async (req, res) => {
-    res.render('post');
+    const PostId = req.params.id;
+    let posts;
+    await fetch(`http://localhost:8080/post/${PostId}`)
+    .then(async response => {
+        posts = await response.post;
+    })
+    .catch(err => {
+        res.redirect('/');
+    });
+    let messages = [];
+    await fetch(`http://localhost:8080/messages/${PostId}`)
+    .then(async response => {
+        await response.messages.forEach(message => {
+            messages.push(message);
+        });
+    })
+    res.render('post', {posts, messages});
+}
+
+exports.getUser = async (req, res) => {
+    const UserId = req.params.id;
+    try {
+        let userInfo;
+        await fetch(`http://localhost:8080/User/${UserId}`)
+        .then( async response => {
+            return await response;
+        })
+        .then(async data => {
+            userInfo = data.user;
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/user');
+        });
+        res.render('profil', userInfo);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'internal server error.'
+        });
+    }
 }
 
 module.exports.isAuthenticated = isAuthenticated;

@@ -3,14 +3,18 @@ const path = require('path');
 const session = require('express-session');
 const app = express();
 const port = 3000;
+const cors = require('cors');
 
 const routes = require('./route/route.js');
 
-// Ne pas oublier d'installer la dependance pour lancer le serveur : npm install express-session
 app.use(session({
     secret: 'votre_secret',
     resave: false,
     saveUninitialized: true
+}));
+
+app.use(cors({
+    origin: '*'
 }));
 
 app.use(express.urlencoded({ extended: false }));

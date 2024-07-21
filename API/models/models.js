@@ -175,7 +175,7 @@ exports.Messages = class Messages {
 }
 
 exports.Topics = class Topics {
-    static getPosts(TopicId) {
+    static GetPosts(TopicId) {
         const query = 'SELECT * FROM Post WHERE TopicId = ?;';
         return new Promise((resolve, reject) => {
             connection.query(query, [TopicId], (err, results) => {
