@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+
+.support {
+    background-color: aliceblue;
+    padding-bottom: 5%;
+    margin-top: 10%;
+}
+
+H1 {
+    color: #000000;
+    text-align: center;
+}
+
+.supportPostAccueil {
+    display: flex;
+    justify-content: center;
+}
+
+.post {
+    background-color: #fff;
+    width: 60%;
+    box-shadow: 5px 5px 30px black;
+}
+
+.lienProfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    margin: 5px;
+}
+
+#iconeProfil {
+    width: 20%;
+}
+
+#iconeProfil > img {
+    width: 50%;
+    border-radius: 50%;
+    background-color: #fff;
+    border: solid black;
+}
+
+#nameSalon {
+    color: #363737;
+    text-decoration: none;
+}
+
+#nameProfil {
+    color: black;
+    text-decoration: none;
+}
+
+.post > p {
+    border-top: #333 solid;
+    width: 95%;
+    color: black;
+    padding-top: 20px;
+    padding-left: 10px;
+}

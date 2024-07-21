@@ -111,7 +111,6 @@ exports.getEsport = async (req, res) => {
 };
 
 exports.getPost = async (req, res) => {
-    if (user.)
     res.render('posts');
 }
 
